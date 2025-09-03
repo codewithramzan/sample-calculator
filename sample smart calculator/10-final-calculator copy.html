@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart QuantityDocuemnt</title>
+  <link rel="stylesheet" href="styles/10-calculator.css">
+</head>
+<body>
+  <h1>Tiny Calculator</h1>
+  <p id="js-display" 
+    onclick="activateCursor()"
+     onblur="deactivateCursor()"
+    tabindex="0">
+    <span id="result">0</span>
+    <span class="cursor">|</span>
+  </p>
+  <div class="calculator-div">
+       <div>
+        <button class="buttons" onclick="addNumber(1);">1</button>
+        <button class="buttons" onclick="addNumber(2);">2</button>
+        <button class="buttons" onclick="addNumber(3);">3</button>
+        <button class="buttons orange" onclick="setOperator('+');">+</button>
+    </div> 
+    <div>
+        <button class="buttons" onclick="addNumber(4);">4</button>
+        <button class="buttons" onclick="addNumber(5);">5</button>
+        <button class="buttons" onclick="addNumber(6);">6</button>
+        <button class="buttons orange" onclick="setOperator('-');">-</button>
+    </div>
+    <div>
+        <button class="buttons" onclick="addNumber(7);">7</button>
+        <button class="buttons" onclick="addNumber(8);">8</button>
+        <button class="buttons" onclick="addNumber(9);">9</button>
+        <button class="buttons orange" onclick="setOperator('*')">*</button>
+    </div>
+    <div>
+          <button class="buttons" onclick="addNumber(0);">0</button>
+        <button class="buttons" onclick="addNumber('.');">.</button>
+        <button class="buttons" onclick="calculate();">=</button>
+        <button class="buttons orange" onclick="setOperator('/')">/</button>
+    </div>
+    <div>
+      <button id="clear-button" class="buttons" onclick="clearLast();">Clear</button>
+      <button id="reset-button" onclick="resetCalculation();">AC</button>
+    </div>
+</div>
+
+<script src="scripts/10-calculator.js"></script>
+</body>
+</html>
