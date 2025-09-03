@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sample Calculator</title>
+</head>
+<body>
+ 
+  <h3>Sample Tiny Calculator</h3>
+  <div>
+    <button onclick="addNumber(1)">1</button>
+    <button onclick="addNumber(2)">2</button>
+    <button onclick="addNumber(3)">3</button>
+    <button onclick="setOperator('+')">+</button>
+    <button onclick="calculate()">=</button>
+    <button onclick="resetCalculation()">C</button>
+  </div>
+
+<p id="result"></p>
+
+<script>
+  let firstNumber = localStorage.getItem('firstNumber') || "";
+  let secondNumber = localStorage.getItem('secondNumber') || "";
+  let operator = localStorage.getItem('operator') || "";
+  let isSecond = false;
+
+  function addNumber(num) {
+    if (!isSecond) {
+      firstNumber += num;
+      document.getElementById("result").innerText = firstNumber;
+      // to store in local storage
+      localStorage.setItem('firstNumber', firstNumber);
+    } else {
+      secondNumber += num;
+      document.getElementById("result").innerText = firstNumber + operator + secondNumber;
+      // to store in local storage
+      localStorage.setItem('secondNumber', secondNumber);
+    }
+  }
+
+
+  function setOperator(op) {
+    if (firstNumber !== '') {
+      operator = op;
+      isSecond = true;
+      document.getElementById("result").innerText = firstNumber + operator;
+      // to store in local storage
+      localStorage.setItem('operator', operator);
+    }
+  }
+
+  function calculate() {
+    let result = 0;
+    if (operator === '+') {
+      result = Number(firstNumber) + Number(secondNumber);
+    }
+    document.getElementById("result").innerText = result;
+    localStorage.setItem(result);
+    
+  }
+    function resetCalculation () {
+      firstNumber = '';
+      secondNumber = '';
+      isSecond = false;
+      localStorage.removeItem('firstNumber');
+      localStorage.removeItem('secondNumber');
+      localStorage.removeItem('operator');
+      // to remove form display
+      document.getElementById('result').innerText = "";
+    }
+
+  
+    /*let cartQuantity= 0;
+    let name='Ramzan Khan';
+    console.log('1 Coffee Price: $5');
+    console.log('2 Bagel Price: $6');
+    console.log('1 Soup Price: $9');
+    let cost= 5+6+9;
+    console.log(`The cost is: $${cost}`);
+    let Tax= cost*0.1;
+    console.log(`Tax(10%): $${Tax}`);
+    cost+=Tax;
+    console.log(`The current Price is: $${cost}`);
+    console.log(`Total Calculation is : ${totalCalulation}`);*/
+  </script>
+</body>
+</html>
